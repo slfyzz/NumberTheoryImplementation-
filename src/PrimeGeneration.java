@@ -3,6 +3,16 @@ import java.util.Vector;
 
 public class PrimeGeneration {
 
+
+    public void Calculate(int n)
+    {
+        final long firstTime = System.nanoTime();
+        segmentedSieve(n);
+        final long LastTime = System.nanoTime();
+
+        System.out.println("\nExecution Time : " + (LastTime - firstTime) / 1000000 + "ms");
+    }
+
     private void simpleSieve(int segmentLength, Vector<Integer> firstPrimes) {
 
         // Boolean array to mark non primes as false
@@ -26,7 +36,7 @@ public class PrimeGeneration {
         }
     }
 
-    public void segmentedSieve(int n) {
+    private void segmentedSieve(int n) {
 
         // Find all primes in the first segment
         // Assumption: Length of segment equals square root of n
