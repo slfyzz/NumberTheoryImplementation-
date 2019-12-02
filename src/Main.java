@@ -2,45 +2,69 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-
+    public static void main(String []args)
+    {
+        CRT crt = new CRT();
+        ExtendedEuclidean extendedEuclidean = new ExtendedEuclidean();
+        PrimeGeneration primeGeneration = new PrimeGeneration();
+        Power power = new Power();
         while (true) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("1.Fast Exponentiation\n2.Extended Euclidean Algorithm");
-            System.out.println("3.Chinese Remainder Theorem\n4.Prime Number Generation");
-            System.out.print("5.Exit\nChoose the operation number: ");
-            int op = scanner.nextInt();
+            System.out.println("1- Mod Exponentiation");
+            System.out.println("2- Extended Euclid Algorithm");
+            System.out.println("3- Chinese Remainder Theorem");
+            System.out.println("4- Prime Generator!");
+            System.out.println("0 to Quit");
 
-            if (op == 1) {
-                Power power = new Power();
-                System.out.println("Enter a:");
-                int a = scanner.nextInt();
-                System.out.println("Enter b");
-                int b = scanner.nextInt();
-                System.out.println("Enter m");
-                int m = scanner.nextInt();
-                System.out.println(power.iterativeFastExp(a, b, m));
-            } else if (op == 2) {
-                ExtendedEuclidean extendedEuclidean = new ExtendedEuclidean();
-                System.out.println("Enter a:");
-                int a = scanner.nextInt();
-                System.out.println("Enter b");
-                int b = scanner.nextInt();
-                System.out.println("GCD is " + extendedEuclidean.Calculate(a, b) + "\n s = " + extendedEuclidean.getS() + "\n t = " + extendedEuclidean.getT());
-            } else if (op == 3) {
+            System.out.print("Enter the number of what Algorithm you want to operate: ");
+            int a = scanner.nextInt();
 
-            } else if (op == 4) {
-                PrimeGeneration primeGeneration = new PrimeGeneration();
-                System.out.println("Enter n:");
-                int n = scanner.nextInt();
-                System.out.println("All primes till n are: ");
-                primeGeneration.segmentedSieve(n);
-            }
-            else if (op == 5) {
+            if (a > 4 || a < 0)
+                System.out.println("you have to choose between 4 choices only!!");
+            else if (a == 0)
                 break;
-            }
             else {
-                System.out.println("Enter valid operation");
+                if (a == 1)
+                {
+                    System.out.println("Enter Base");
+                    int Base = scanner.nextInt();
+                    System.out.println("Enter Exp");
+                    int Exp = scanner.nextInt();
+                    System.out.println("Enter mod");
+                    int mod = scanner.nextInt();
+                    power.Calculate(Base, Exp, mod);
+                }
+                else if (a == 2)
+                {
+                    System.out.println("Enter a");
+                    int b = scanner.nextInt();
+                    System.out.println("Enter b");
+                    int m = scanner.nextInt();
+                    extendedEuclidean.ExtendedGCD(b, m);
+                }
+                else if (a == 3)
+                {
+                    System.out.println("Enter A");
+                    long A = scanner.nextLong();
+                    System.out.println("Enter B");
+                    long B = scanner.nextLong();
+                    System.out.println("Enter number of moduli");
+                    int M = scanner.nextInt();
+                    System.out.println("Enter the sequence of moduli");
+                    long []arr = new long[M];
+                    for (int i = 0; i < M; i++)
+                    {
+                        arr[i] = scanner.nextLong();
+                    }
+                    crt.Calculate(A, B, arr);
+                }
+                else if (a == 4)
+                {
+                    System.out.println("Enter n");
+                    int b = scanner.nextInt();
+                    primeGeneration.Calculate(b);
+                }
+
             }
         }
     }

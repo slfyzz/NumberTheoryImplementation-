@@ -1,6 +1,6 @@
 public class Power {
 
-    public long recursiveFastExp(long base, long exp, long mod)
+    private long recursiveFastExp(long base, long exp, long mod)
     {
         if (exp == 0)
             return 1;
@@ -15,7 +15,7 @@ public class Power {
         return x % mod;
     }
 
-    public long iterativeFastExp(long base, long exp, long mod)
+    private long iterativeFastExp(long base, long exp, long mod)
     {
         long x = 1;
         long power = base % mod;
@@ -33,11 +33,11 @@ public class Power {
         return x;
     }
 
-    public long naiveOne(long base, long exp, long mod)
+    private long naiveOne(long base, long exp, long mod)
     {
         long c = 1;
 
-        for (int i = 1; i < exp; i++)
+        for (int i = 1; i <= exp; i++)
         {
             c = c * base;
             c %= mod;
@@ -46,13 +46,47 @@ public class Power {
         return c;
     }
 
-    public long naiveTwo(long base, long exp, long mod)
+    private long naiveTwo(long base, long exp, long mod)
     {
         long c = 1;
-        for (int i = 1; i < exp; i++)
+        for (int i = 1; i <= exp; i++)
             c = (c * base) % mod;
 
         return c;
+    }
+
+    public void Calculate(long base, long exp, long mod)
+    {
+        System.out.println("Using Recursive fast Exponentiation");
+        final long recursiveFirstTime = System.nanoTime();
+        long res = recursiveFastExp(base, exp, mod);
+        final long recursiveLastTime = System.nanoTime();
+
+        System.out.println(base + "^" + exp + " mod " + mod + " = " + res + "\n Execution Time : " + (recursiveLastTime - recursiveFirstTime)/1000000 + "ms\n\n");
+
+        System.out.println("Using Iterative fast Exponentiation");
+        final long IterativeFirst = System.nanoTime();
+        res = iterativeFastExp(base, exp, mod);
+        final long IterativeLast = System.nanoTime();
+
+        System.out.println(base + "^" + exp + " mod " + mod + " = " + res + "\n Execution Time : " + (IterativeLast - IterativeFirst)/1000000 + "ms\n\n");
+
+        System.out.println("Using Naive1 Method");
+        final long naive1First = System.nanoTime();
+        res = naiveOne(base, exp, mod);
+        final long naive1last = System.nanoTime();
+
+        System.out.println(base + "^" + exp + " mod " + mod + " = " + res + "\n Execution Time : " + (naive1last - naive1First)/1000000 + "ms\n\n");
+
+        System.out.println("Using Recursive fast Exponentiation");
+        final long naive2first = System.nanoTime();
+        res = naiveTwo(base, exp, mod);
+        final long naive2last = System.nanoTime();
+
+        System.out.println(base + "^" + exp + " mod " + mod + " = " + res + "\n Execution Time : " + (naive2last - naive2first)/1000000 + "ms\n\n");
+
+
+
     }
 
 
