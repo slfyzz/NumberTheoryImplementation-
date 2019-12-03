@@ -1,14 +1,18 @@
 public class Power {
 
+    // the program will break if the integer passing to the Calculate function is overFlowing the "Long" maxValue
+
     private long recursiveFastExp(long base, long exp, long mod)
     {
         if (exp == 0)
             return 1;
 
+
         long x = recursiveFastExp(base, exp / 2, mod) % mod;
         x *= x;
         x %= mod;
 
+        // if the exp is odd
         if (exp % 2 == 1)
             x *= base;
 

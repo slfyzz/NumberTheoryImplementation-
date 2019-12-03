@@ -15,11 +15,14 @@ public class ExtendedEuclidean {
 
         long r1, r2, s1, s2 = 0, t1 = 0, t2,q;
         s1 = t2 = 1;
+
+        // r1 holds the max between a and b
         r1 = Math.abs(Math.max(a, b));
         r2 = Math.abs(Math.min(a, b));
 
         while (r2 != 0)
         {
+            // doing the operations of the Extended Euclid Algorithm
             q = (int) Math.floor(r1 / r2);
             gcd = r1 % r2;
 
@@ -35,6 +38,8 @@ public class ExtendedEuclidean {
         gcd = r1;
         s = s1;
         t = t1;
+
+        // make sure that the program doesnt crash with negative input
         handleTheNegative(a, b);
 
         if (b == Math.max(a, b))
@@ -66,8 +71,7 @@ public class ExtendedEuclidean {
         return t;
     }
 
-    private void handleTheNegative(long a, long
-            b)
+    private void handleTheNegative(long a, long b)
     {
         if (a > b)
         {

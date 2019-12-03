@@ -24,8 +24,7 @@ public class Main {
             else if (a == 0)
                 break;
             else {
-                if (a == 1)
-                {
+                if (a == 1) {
                     System.out.println("Enter Base");
                     int Base = scanner.nextInt();
                     System.out.println("Enter Exp");
@@ -33,17 +32,13 @@ public class Main {
                     System.out.println("Enter mod");
                     int mod = scanner.nextInt();
                     power.Calculate(Base, Exp, mod);
-                }
-                else if (a == 2)
-                {
+                } else if (a == 2) {
                     System.out.println("Enter a");
                     int b = scanner.nextInt();
                     System.out.println("Enter b");
                     int m = scanner.nextInt();
                     extendedEuclidean.ExtendedGCD(b, m);
-                }
-                else if (a == 3)
-                {
+                } else if (a == 3) {
                     System.out.println("Enter A");
                     long A = scanner.nextLong();
                     System.out.println("Enter B");
@@ -51,21 +46,18 @@ public class Main {
                     System.out.println("Enter number of moduli");
                     int M = scanner.nextInt();
                     System.out.println("Enter the sequence of moduli");
-                    long []arr = new long[M];
-                    for (int i = 0; i < M; i++)
-                    {
+                    long[] arr = new long[M];
+                    for (int i = 0; i < M; i++) {
                         arr[i] = scanner.nextLong();
                     }
                     crt.Calculate(A, B, arr);
-                }
-                else if (a == 4)
-                {
+                } else {
                     System.out.println("Enter n");
                     int b = scanner.nextInt();
                     primeGeneration.Calculate(b);
                 }
-
             }
+
         }
     }
 }
